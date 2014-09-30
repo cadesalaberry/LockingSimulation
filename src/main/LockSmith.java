@@ -1,10 +1,20 @@
-
-
-
 public class LockSmith {
 
 	public static void main(String[] args) {
-		solveQuestion(1, 2, 100000);
+
+		int cores = Runtime.getRuntime().availableProcessors();
+
+		System.out.println("n,\ttime,\tdelay");
+
+		// Does the questions one by one.
+		for (int j = 1; j <= 4; j++) {
+
+			// Start n at 100 000, and keep doubling n until the slowest locking
+			// strategy takes 10s
+			for (int i = 0; i < 5; i++) {
+				solveQuestion(j, cores, (2 << i) * 100000);
+			}
+		}
 	}
 
 	public static void solveQuestion(int q, int nbOfThreads, int n) {
@@ -30,28 +40,28 @@ public class LockSmith {
 		}
 
 		time = b.benchmark();
-		String report = "With a max wait time of " + b.getMaxDelay();
-		report += " turns, It took " + time + "ms to run ";
+
+		String report = "" + n;
+		report += "," + time;
+		report += "," + b.getMaxDelay();
 
 		switch (q) {
 		case 1:
-			report += "Synchronized lock ";
+			report += ", Synchronized";
 			break;
 		case 2:
-			report += "SimpleTTAS lock ";
+			report += ", SimpleTTAS";
 			break;
 		case 3:
-			report += "TTAS with exponential back-off lock ";
+			report += ", backoffTTAS";
 			break;
 		case 4:
-			report += "CLH lock ";
+			report += ", CLH";
 			break;
 		default:
 			break;
 		}
-		
-		report += "for " + n + " points";
-		
+
 		System.out.println(report);
 
 	}
