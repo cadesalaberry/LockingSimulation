@@ -23,7 +23,7 @@ public class Benchmarkable extends Lockable implements Runnable {
 	public long benchmark() {
 
 		ArrayList<Thread> threads = new ArrayList<>();
-		
+
 		long t0 = System.currentTimeMillis();
 
 		try {
@@ -103,7 +103,7 @@ public class Benchmarkable extends Lockable implements Runnable {
 			this.lockReleased();
 		}
 	}
-	
+
 	public long getMaxDelay() {
 		return maxDelay;
 	}

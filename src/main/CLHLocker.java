@@ -1,19 +1,18 @@
 
-
 import java.util.concurrent.atomic.AtomicReference;
 
 public class CLHLocker extends Benchmarkable {
 
 	private final ThreadLocal<Node> pred = new ThreadLocal<Node>() {
-        protected Node initialValue() {
-            return null;
-        }
-    };
-	private final ThreadLocal<Node> me = new ThreadLocal<Node>(){
-        protected Node initialValue() {
-            return new Node();
-        }
-    };
+		protected Node initialValue() {
+			return null;
+		}
+	};
+	private final ThreadLocal<Node> me = new ThreadLocal<Node>() {
+		protected Node initialValue() {
+			return new Node();
+		}
+	};
 
 	private final AtomicReference<Node> tail = new AtomicReference<Node>(
 			new Node());
