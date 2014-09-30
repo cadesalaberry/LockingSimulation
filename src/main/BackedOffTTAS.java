@@ -14,24 +14,25 @@ public class BackedOffTTAS extends Benchmarkable {
 	public boolean lock() {
 
 		boolean acquired = false;
-		int fail = 0;
+		int tryNumber = 0;
 
 		Random rand = new Random();
 
 		while (!acquired) {
-			/*
-			 * First test the lock without invalidating any cache lines.
-			 */
+
+			// Tries to test the lock without invalidating any cache lines.
 			if (!locked.get()) {
-				/* Attempt to lock the lock with an atomic CAS. */
+
+				// Tries to lock the lock with an atomic CAS
 				acquired = locked.compareAndSet(false, true);
 			} else {
-				fail++;
+				tryNumber++;
 				try {
-					// Sleep a random amount of time k * WAIT_CONST were
-					// k=rand(0,2^fail-1)
-					Thread.sleep(WAIT_CONST
-							* rand.nextInt((int) Math.pow(2, fail) - 1));
+
+					long k = rand.nextInt((int) Math.pow(2, tryNumber) - 1);
+
+					Thread.sleep(WAIT_CONST * k);
+
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

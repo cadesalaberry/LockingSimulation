@@ -4,7 +4,7 @@ public class LockSmith {
 
 		int cores = Runtime.getRuntime().availableProcessors();
 
-		System.out.println("n,\ttime,\tdelay");
+		System.out.println("n, time, delay, name");
 
 		// Does the questions one by one.
 		for (int j = 1; j <= 4; j++) {

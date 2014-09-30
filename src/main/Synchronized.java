@@ -1,5 +1,4 @@
 
-
 public class Synchronized extends Benchmarkable {
 
 	private boolean locked = false;
