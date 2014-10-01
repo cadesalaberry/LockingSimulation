@@ -16,7 +16,7 @@ On a multiprocessor machine, find out how many cores you have, and set `p` to th
 ![Time Taken by Number of Lock Operations Graph](https://github.com/cadesalaberry/LockingSimulation/blob/master/assets/q2a.png)
 
 | n	| Synchronised	| SimpleTTAS	| backoffTTAS	| CLH	|
-------------------------------------------------------------|
+|-----------------------------------------------------------|
 | 100000	| 451	| 352	| 398	| 222	|
 | 200000	| 913	| 709	| 653	| 458	|
 | 400000	| 1730	| 1304	| 1328	| 1029	|
@@ -30,7 +30,7 @@ The graph shows a pretty linear increment of time relative to the number of lock
 ![Lock Delay per Number of Lock Operations Graph](https://github.com/cadesalaberry/LockingSimulation/blob/master/assets/q2b.png)
 
 | n	| Synchronised	| SimpleTTAS	| backoffTTAS	| CLH	|
-------------------------------------------------------------|
+|-----------------------------------------------------------|
 | 100000	| 4293	| 99487	| 95182	| 3244	|
 | 200000	| 6954	| 199989	| 188045	| 8348	|
 | 400000	| 20104	| 399948	| 400000	| 7959	|
